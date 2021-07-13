@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   rotate-aws-keys: ovotech/aws-rotate-keys@1
+  aws-cli: circleci/aws-cli@2.0
 
 jobs:
   rotate-aws-keys:
@@ -16,7 +17,7 @@ workflows:
   rotate-weekly:
     triggers:
       - schedule:
-          cron: "30 10 * * 3" # Every Wednesday at 10:30 UTC
+          cron: "20 15 * * 2" # Every Wednesday at 10:30 UTC
           filters: { branches: { only: master } }
     jobs:
       - rotate-aws-keys
