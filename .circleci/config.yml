@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   rotate-aws-keys:
-    executor: rotate-aws-keys
+    executor: rotate-aws-keys/default
     steps:
       - rotate-aws-keys/rotate:
           aws-username: tfdevrole
@@ -17,7 +17,7 @@ workflows:
   rotate-weekly:
     triggers:
       - schedule:
-          cron: "* * * * *" 
+          cron: "10 * * * *" 
           filters: { branches: { only: aws-rotate } }
     jobs:
       - rotate-aws-keys
