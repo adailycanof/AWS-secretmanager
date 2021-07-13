@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-rotate-keys: ovotech/aws-rotate-keys
+  aws-rotate-keys: ovotech/aws-rotate-keys@1.0.220
 
 jobs:
   rotate-aws-keys:
