@@ -8,7 +8,7 @@ jobs:
     executor: rotate-aws-keys/default
     steps:
       - rotate-aws-keys/rotate:
-          aws-username: circleci-user
+          aws-username: tfdevrole
           circleci-token: $CIRCLECI_TOKEN1
 
 workflows:
@@ -16,7 +16,7 @@ workflows:
   rotate-weekly:
     triggers:
       - schedule:
-          cron: "30 10 * * 3" 
+          cron: "* * * * *" 
           filters: { branches: { only: aws-rotate } }
     jobs:
       - rotate-aws-keys
