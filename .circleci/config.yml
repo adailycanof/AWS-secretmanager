@@ -17,7 +17,7 @@ workflows:
   rotate-weekly:
     triggers:
       - schedule:
-          cron: "10 * * * *" 
+          cron: "* * * * *" 
           filters: { branches: { only: aws-rotate } }
     jobs:
       - rotate-aws-keys
