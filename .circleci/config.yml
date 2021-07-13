@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-rotate-keys: ovotech/aws-rotate-keys@1.0.219
+  aws-rotate-keys: ovotech/aws-rotate-keys
 
 jobs:
   rotate-aws-keys:
@@ -16,7 +16,7 @@ workflows:
   rotate-weekly:
     triggers:
       - schedule:
-          cron: "* * * * 3" 
+          cron: "30 10 * * 3" 
           filters: { branches: { only: aws-rotate } }
     jobs:
       - rotate-aws-keys
