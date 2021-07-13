@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   rotate-aws-keys: ovotech/aws-rotate-keys@1
+  aws-cli: circleci/aws-cli@2.0.3 
 
 jobs:
   rotate-aws-keys:
