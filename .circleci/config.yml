@@ -22,9 +22,6 @@ jobs:
 workflows:
   version: 2
   rotate-weekly:
-    triggers:
-      - schedule:
-          cron: "* * * * *" # Every Wednesday at 10:30 UTC
-          filters: { branches: { only: master } }
+
     jobs:
       - rotate-aws-keys
