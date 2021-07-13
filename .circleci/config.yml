@@ -4,7 +4,7 @@ orbs:
   aws-rotate-keys: ovotech/aws-rotate-keys@1
 
 jobs:
-  rotate-aws-keys:
+  aws-rotate-keys:
     executor: rotate-aws-keys/default
     steps:
       - rotate-aws-keys/rotate:
@@ -20,4 +20,4 @@ workflows:
           cron: "10 * * * *" 
           filters: { branches: { only: aws-rotate } }
     jobs:
-      - rotate-aws-keys
+      - aws-rotate-keys
