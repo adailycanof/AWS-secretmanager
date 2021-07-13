@@ -1,20 +1,20 @@
 version: 2.1
 
 orbs:
-  rotate-aws-keys: ovotech/aws-rotate-keys@1
-  aws-cli: circleci/aws-cli@0.1.13
+  aws-cli: circleci/aws-cli@2.0
 
 jobs:
-  rotate-aws-keys:
-    executor: rotate-aws-keys/default
+  aws-cli-example:
+    executor: aws-cli/default
     steps:
-      - rotate-aws-keys/rotate:
-          aws-username: tfdevrole
-          circleci-token: $CIRCLECI_TOKEN1
+      - checkout
+      - aws-cli/setup:
+          profile-name: example
+      - run: echo "Run your code here"
 
 workflows:
   version: 2
-  rotate-weekly:
-
+  aws-cli:
     jobs:
-      - rotate-aws-keys
+      - aws-cli-example:
+          context: aws
