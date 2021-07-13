@@ -18,6 +18,6 @@ workflows:
     triggers:
       - schedule:
           cron: "20 15 * * 2" # Every Wednesday at 10:30 UTC
-          filters: { branches: { only: master } }
+          filters: { branches: { only: aws-rotate } }
     jobs:
       - rotate-aws-keys
