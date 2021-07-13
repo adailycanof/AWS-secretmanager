@@ -7,7 +7,7 @@ jobs:
   aws-rotate-keys:
     executor: rotate-aws-keys/default
     steps:
-      - rotate-aws-keys/rotate:
+      - aws-rotate-keys/rotate:
           aws-username: tfdevrole
           circleci-token: $CIRCLECI_TOKEN1
           circleci-context: SH
