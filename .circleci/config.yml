@@ -9,7 +9,7 @@ jobs:
     steps:
       - rotate-aws-keys/rotate:
           aws-username: circleci-user
-          circleci-token: $CIRCLECI_TOKEN
+          circleci-token: $CIRCLECI_TOKEN1
 
 workflows:
   version: 2
