@@ -1,0 +1,22 @@
+version: 2.1
+
+orbs:
+  rotate-aws-keys: ovotech/aws-rotate-keys@1
+
+jobs:
+  rotate-aws-keys:
+    executor: rotate-aws-keys/default
+    steps:
+      - rotate-aws-keys/rotate:
+          aws-username: circleci-user
+          circleci-token: $CIRCLECI_TOKEN
+
+workflows:
+  version: 2
+  rotate-weekly:
+    triggers:
+      - schedule:
+          cron: "30 10 * * 3" # Every Wednesday at 10:30 UTC
+          filters: { branches: { only: master } }
+    jobs:
+      - rotate-aws-keys
