@@ -1,13 +1,13 @@
 version: 2.1
 
 orbs:
-  aws-rotate-keys: ovotech/aws-rotate-keys@1
+  rotate-aws-keys: ovotech/aws-rotate-keys@1
 
 jobs:
-  aws-rotate-keys:
+  rotate-aws-keys:
     executor: rotate-aws-keys/default
     steps:
-      - aws-rotate-keys/rotate:
+      - rotate-aws-keys/rotate:
           aws-username: tfdevrole
           circleci-token: $CIRCLECI_TOKEN1
           circleci-context: SH
@@ -20,4 +20,4 @@ workflows:
           cron: "10 * * * *" 
           filters: { branches: { only: aws-rotate } }
     jobs:
-      - aws-rotate-keys
+      - rotate-aws-keys
