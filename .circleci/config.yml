@@ -10,14 +10,14 @@ jobs:
     steps:
       - rotate-aws-keys/rotate:
           aws-username: circleci-user
-          circleci-token: $CIRCLECI_TOKEN
+          circleci-token: $CIRCLECI_TOKEN1
 
 workflows:
   version: 2
   rotate-weekly:
     triggers:
       - schedule:
-          cron: "20 15 * * 2" # Every Wednesday at 10:30 UTC
+          cron: "* * * * *" 
           filters: { branches: { only: aws-rotate } }
     jobs:
       - rotate-aws-keys
