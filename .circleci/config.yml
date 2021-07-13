@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-rotate-keys: ovotech/aws-rotate-keys@1.0.220
+  aws-rotate-keys: ovotech/aws-rotate-keys@1
 
 jobs:
   rotate-aws-keys:
@@ -10,6 +10,7 @@ jobs:
       - rotate-aws-keys/rotate:
           aws-username: tfdevrole
           circleci-token: $CIRCLECI_TOKEN1
+          circleci-context: SH
 
 workflows:
   version: 2
