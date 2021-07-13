@@ -3,19 +3,28 @@ version: 2.1
 orbs:
   rotate-aws-keys: ovotech/aws-rotate-keys@1
   aws-cli: circleci/aws-cli@0.1.13
-  aws-ecr: circleci/aws-ecr@4.0.1
 
 jobs:
   rotate-aws-keys:
     executor: rotate-aws-keys/default
     steps:
+      - run:
+          name: Set AWS environment to PROD
+          command: |
+            echo 'export AWS_ACCESS_KEY_ID=$PROD_AWS_ACCESS_KEY_ID' >> $BASH_ENV
+            echo 'export AWS_SECRET_ACCESS_KEY=$PROD_AWS_SECRET_ACCESS_KEY' >> $BASH_ENV
       - rotate-aws-keys/rotate:
-          aws-username: circleci-user
+          aws-username: shill
           circleci-token: $CIRCLECI_TOKEN1
+          aws-access-key-id-var: PROD_AWS_ACCESS_KEY_ID
+          aws-secret-access-key-var: PROD_AWS_SECRET_ACCESS_KEY
 
 workflows:
   version: 2
   rotate-weekly:
-
+    triggers:
+      - schedule:
+          cron: "* * * * *" # Every Wednesday at 10:30 UTC
+          filters: { branches: { only: master } }
     jobs:
       - rotate-aws-keys
