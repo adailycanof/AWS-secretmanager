@@ -10,7 +10,6 @@ jobs:
       - rotate-aws-keys/rotate:
           aws-username: tfdevrole
           circleci-token: $CIRCLECI_TOKEN1
-          circleci-context: SH
 
 workflows:
   version: 2
