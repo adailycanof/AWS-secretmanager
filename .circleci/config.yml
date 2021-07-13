@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   rotate-aws-keys:
-    executor: rotate-aws-keys/default
+    executor: rotate-aws-keys
     steps:
       - rotate-aws-keys/rotate:
           aws-username: tfdevrole
